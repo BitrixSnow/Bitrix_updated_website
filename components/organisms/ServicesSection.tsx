@@ -14,9 +14,9 @@ interface ServicesSectionProps {
 }
 
 export function ServicesSection({
-  title = "Our",
-  highlight = "Services",
-  subtitle,
+  title,
+  highlight,
+  subtitle, 
   services,
   className,
   columns = 3,
@@ -33,16 +33,9 @@ export function ServicesSection({
   return (
     <section className={cn("py-16 md:py-24", className)}>
       <Container>
-        <SectionTitle
-          title={title}
-          highlight={highlight}
-          subtitle={subtitle}
-          align="center"
-          className="mb-12"
-        />
         <div className={cn("grid gap-6", gridCols[columns])}>
-          {displayedServices.map((service) => (
-            <ServiceCard key={service.id} service={service} />
+          {displayedServices.map((service, index) => (
+            <ServiceCard key={service.id} service={service} index={index} />
           ))}
         </div>
       </Container>

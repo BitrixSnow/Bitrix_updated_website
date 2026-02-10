@@ -1,5 +1,8 @@
+ "use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Container, Icon } from "@/components/atoms";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -21,6 +24,7 @@ interface HeroSectionProps {
   };
   className?: string;
   variant?: "default" | "centered" | "simple";
+  showBreadcrumb?: boolean;
 }
 
 export function HeroSection({
@@ -34,11 +38,38 @@ export function HeroSection({
   secondaryCta,
   className,
   variant = "default",
+  showBreadcrumb = true,
 }: HeroSectionProps) {
+  const pathname = usePathname();
+  const breadcrumbLabel = (() => {
+    const segments = pathname.split("/").filter(Boolean);
+    if (segments.length === 0) return "Home";
+    const last = segments[segments.length - 1];
+    return last
+      .split("-")
+      .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
+      .join(" ");
+  })();
+
+  const Breadcrumb = showBreadcrumb ? (
+    <div className="mb-0 flex items-center gap-2 text-sm text-muted-foreground">
+      <Link
+        href="/"
+        className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-foreground/10 bg-white/80 shadow-sm"
+        aria-label="Home"
+      >
+        <Icon name="home" size={16} />
+      </Link>
+      <span className="text-foreground/40">›</span>
+      <span className="font-medium text-foreground/70">{breadcrumbLabel}</span>
+    </div>
+  ) : null;
+
   if (variant === "simple") {
     return (
       <section className={cn("py-16 md:py-24 bg-muted/30", className)}>
         <Container className="text-center">
+          <div className="text-left mt-0">{Breadcrumb}</div>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-balance">
             {title}{" "}
             {highlight && (
@@ -68,6 +99,7 @@ export function HeroSection({
     return (
       <section className={cn("py-20 md:py-32", className)}>
         <Container className="text-center">
+          <div className="text-left">{Breadcrumb}</div>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-balance max-w-4xl mx-auto">
             {title}{" "}
             {highlight && (
@@ -110,8 +142,9 @@ export function HeroSection({
   }
 
   return (
-    <section className={cn("py-16 md:py-24", className)}>
+    <section className={cn("py-16 md:py-10", className)}>
       <Container>
+        {Breadcrumb}
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-balance">

@@ -1,4 +1,4 @@
-import { Settings, Users, Briefcase, Shield, Code, Heart, Building, Factory, Landmark, GraduationCap, ShoppingCart, ArrowRight, Check, ChevronRight, ChevronDown, Menu, X, Mail, Phone, MapPin, Linkedin, Twitter, Facebook, Instagram, Quote, Calendar, Clock, Star, Play, Workflow, Type as type, LucideIcon } from "lucide-react";
+import { Settings, Users, Briefcase, Shield, Code, Heart, Building, Factory, Landmark, GraduationCap, ShoppingCart, ArrowLeft, ArrowRight, Check, ChevronRight, ChevronDown, Menu, X, Mail, Phone, MapPin, Linkedin, Twitter, Facebook, Instagram, Quote, Calendar, Clock, Star, Play, Workflow, Home, Type as type, LucideIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const iconMap: Record<string, LucideIcon> = {
@@ -13,6 +13,7 @@ const iconMap: Record<string, LucideIcon> = {
   landmark: Landmark,
   "graduation-cap": GraduationCap,
   "shopping-cart": ShoppingCart,
+  "arrow-left": ArrowLeft,
   "arrow-right": ArrowRight,
   check: Check,
   "chevron-right": ChevronRight,
@@ -32,6 +33,7 @@ const iconMap: Record<string, LucideIcon> = {
   star: Star,
   play: Play,
   workflow: Workflow,
+  home: Home,
 };
 
 interface IconProps {

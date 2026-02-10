@@ -192,72 +192,198 @@ export default function HomePage() {
       </section>
 
       {/* ServiceNow Assessment Section */}
-      <section className="py-16 md:py-24">
+      <section className="py-16 md:py-24 bg-white text-foreground">
         <Container>
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
-              <SectionTitle
-                title="ServiceNow"
-                highlight="Micro Assessment"
-                className="mb-6"
-              />
-              <p className="text-muted-foreground mb-6">
-                Our comprehensive assessment helps identify opportunities to optimize your
-                ServiceNow investment and accelerate your digital transformation journey.
+              <span className="inline-flex items-center mt-0 gap-2 rounded-full border border-border px-4 py-1 text-xs uppercase tracking-wide text-muted-foreground">
+                <span className="h-2 w-2 rounded-full bg-rose-500" />
+                ServiceNow
+              </span>
+              <div className="mt-6">
+                <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight text-black/90">
+                  <span className="text-black/60">ServiceNow</span>{" "}
+                  <span className="text-rose-500">Micro Assessment</span>
+                </h2>
+              </div>
+              <p className="mt-5 text-muted-foreground max-w-xl">
+                We help you assess existing ServiceNow implementation with a prioritized
+                roadmap that scales with business needs over time, a strategic solution for
+                expanding digital excellence.
               </p>
-              <ul className="space-y-3 mb-8">
+              <ul className="mt-6 space-y-3">
                 {[
-                  "Evaluate current implementation maturity",
-                  "Identify optimization opportunities",
-                  "Develop strategic roadmap",
-                  "Prioritize high-impact initiatives",
+                  "Assess existing ServiceNow implementations",
+                  "Evaluation of existing ITSM tool",
+                  "Understand the process gaps",
                 ].map((item) => (
                   <li key={item} className="flex items-center gap-3">
-                    <div className="w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center">
-                      <Icon name="check" size={12} className="text-primary" />
+                    <div className="w-5 h-5 rounded-full bg-rose-500/10 flex items-center justify-center">
+                      <Icon name="check" size={12} className="text-rose-500" />
                     </div>
-                    <span className="text-sm">{item}</span>
+                    <span className="text-sm text-muted-foreground">{item}</span>
                   </li>
                 ))}
               </ul>
-              <Button asChild>
-                <Link href="/contact">
-                  Request Assessment
-                  <Icon name="arrow-right" size={18} className="ml-2" />
-                </Link>
-              </Button>
             </div>
-            <div className="space-y-4">
-              <h3 className="font-semibold text-lg">
-                Why choose <span className="text-primary">Bitrix?</span>
-              </h3>
-              <div className="grid grid-cols-2 gap-4">
-                {[
-                  { icon: "check", title: "Detailed ServiceNow" },
-                  { icon: "check", title: "Cost-Optimized Approach" },
-                  { icon: "check", title: "Cloud Service Expertise" },
-                  { icon: "check", title: "Extended Workbench" },
-                  { icon: "check", title: "Technical Assistance" },
-                  { icon: "check", title: "Skilled Experts" },
-                ].map((item) => (
-                  <div key={item.title} className="flex items-center gap-2">
-                    <Icon name={item.icon} size={16} className="text-primary" />
-                    <span className="text-sm">{item.title}</span>
+            <div className="space-y-6">
+              {[
+                {
+                  icon: "grid",
+                  title: "Technology Adoption",
+                  description:
+                    "We provide actionable insights on adopting the latest technologies without any obstacles.",
+                  color: "text-amber-400",
+                },
+                {
+                  icon: "sparkles",
+                  title: "Digital excellence",
+                  description:
+                    "Superior solutions are provided to understand the process gaps for expanding Digital Excellence.",
+                  color: "text-sky-400",
+                },
+                {
+                  icon: "briefcase",
+                  title: "Strategic solution",
+                  description:
+                    "We ensure seamless integration of ServiceNow with your business processes.",
+                  color: "text-amber-300",
+                },
+                {
+                  icon: "trending-up",
+                  title: "Cost Optimisation",
+                  description:
+                    "We ensure seamless integration of ServiceNow with your business processes.",
+                  color: "text-fuchsia-400",
+                },
+              ].map((item) => (
+                <div
+                  key={item.title}
+                  className="rounded-2xl border border-border bg-white p-5 md:p-6 shadow-sm"
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="w-9 h-9 rounded-lg bg-muted flex items-center justify-center">
+                      <Icon name={item.icon} size={18} className={item.color} />
+                    </div>
+                    <h3 className="text-lg font-semibold text-black/90">{item.title}</h3>
                   </div>
-                ))}
-              </div>
+                  <p className="mt-3 text-sm text-muted-foreground">{item.description}</p>
+                </div>
+              ))}
             </div>
           </div>
         </Container>
       </section>
 
+      {/* Why Choose Section */}
+      <section className="py-16 md:py-24 bg-white text-foreground">
+        <Container>
+          <div className="text-center max-w-3xl mx-auto">
+            <span className="inline-flex items-center gap-2 rounded-full border border-border px-4 py-1 text-xs uppercase tracking-wide text-muted-foreground">
+              <span className="h-2 w-2 rounded-full bg-rose-500" />
+              Our Specialities
+            </span>
+            <h2 className="mt-6 text-3xl md:text-4xl lg:text-5xl font-semibold text-black/90">
+              Why choose <span className="text-rose-500">Bitrix</span>
+            </h2>
+            <p className="mt-4 text-muted-foreground">
+              Our expertise allows your business to streamline workflow and increase
+              productivity. We believe in providing the best services to our customers with
+              maximum efficiency.
+            </p>
+          </div>
+
+          <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              { icon: "users", title: "Customer Satisfaction" },
+              { icon: "trending-up", title: "Cost Optimisation" },
+              { icon: "shield", title: "Assured Commitment" },
+              { icon: "cpu", title: "Technical Excellence" },
+              { icon: "award", title: "Skilled Experts" },
+            ].map((item) => (
+              <div
+                key={item.title}
+                className="flex items-center gap-4 rounded-2xl border border-border bg-white p-5 shadow-sm"
+              >
+                <div className="w-12 h-12 rounded-xl bg-muted flex items-center justify-center">
+                  <Icon name={item.icon} size={20} className="text-foreground" />
+                </div>
+                <h3 className="text-base md:text-lg font-semibold text-black/90">
+                  {item.title}
+                </h3>
+              </div>
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      {/* Our Impact Section */}
+      <section className="py-16 md:py-24 bg-white text-foreground">
+        <Container>
+          <div className="text-center max-w-3xl mx-auto">
+            <span className="inline-flex items-center gap-2 rounded-full border border-border px-4 py-1 text-xs uppercase tracking-wide text-muted-foreground">
+              <span className="h-2 w-2 rounded-full bg-rose-500" />
+              Our Impact
+            </span>
+            <h2 className="mt-6 text-3xl md:text-4xl lg:text-5xl font-semibold text-black/90">
+              We <span className="text-rose-500">Innovate</span> and{" "}
+              <span className="text-rose-500">Transform</span>
+            </h2>
+            <p className="mt-4 text-muted-foreground">
+              Trusted by many leading organizations, we delivered 40+ ServiceNow instances
+              with 180+ modules, 12 scoped applications, 3 CRM applications, and 25+ web
+              applications. We have a customer base of 30+ and 9 partners across the globe.
+            </p>
+          </div>
+
+          <div className="mt-12 grid md:grid-cols-2 gap-8">
+            {[
+              {
+                metric: "25",
+                title: "Customer Satisfaction",
+                description:
+                  "We are focused on creating a customer-centric environment.",
+              },
+              {
+                metric: "10",
+                title: "Projects Completed",
+                description:
+                  "Successfully delivered projects for IT & software industries.",
+              },
+            ].map((item) => (
+              <div
+                key={item.title}
+                className="rounded-2xl border border-border bg-white p-6 md:p-8 shadow-sm"
+              >
+                <div className="flex items-start gap-6">
+                  <div className="text-6xl md:text-7xl font-semibold text-black/80">
+                    {item.metric}
+                  </div>
+                  <div className="flex-1">
+                    <div className="h-12 w-12 rounded-lg bg-rose-500/10 flex items-center justify-center">
+                      <span className="text-rose-500 text-3xl leading-none">+</span>
+                    </div>
+                    <h3 className="mt-4 text-lg font-semibold text-black/90">
+                      {item.title}
+                    </h3>
+                    <p className="mt-2 text-sm text-muted-foreground">
+                      {item.description}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </Container>
+      </section>
+
       {/* Stats Section */}
-      <StatsSection
+      {/* <StatsSection
         title="Our numbers and"
         highlight="Excellence"
         stats={stats}
         className="bg-muted/30"
-      />
+      /> */}
 
       {/* Testimonials Section */}
       <TestimonialsSection
@@ -269,32 +395,10 @@ export default function HomePage() {
       />
 
       {/* Contact/Quote Section */}
-      <ContactSection
-        title="Request a"
-        highlight="quote"
-        showImage={true}
-      />
+      <ContactSection/>
 
       {/* Newsletter Section */}
       <NewsletterSection />
-
-      {/* CTA Section */}
-      <section className="py-16 md:py-24 bg-foreground text-background">
-        <Container className="text-center">
-          <h2 className="text-2xl md:text-3xl font-bold mb-4">
-            Or book a <span className="text-primary">free call</span>
-          </h2>
-          <p className="text-background/70 mb-8">
-            Schedule a consultation with our experts
-          </p>
-          <Button asChild variant="outline" size="lg" className="border-background text-background hover:bg-background hover:text-foreground bg-transparent">
-            <Link href="/contact">
-              Schedule a Call
-              <Icon name="arrow-right" size={18} className="ml-2" />
-            </Link>
-          </Button>
-        </Container>
-      </section>
     </PageTemplate>
   );
 }
