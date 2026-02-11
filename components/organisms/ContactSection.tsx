@@ -24,12 +24,14 @@ interface ContactSectionProps {
 export function ContactSection({ className }: ContactSectionProps) {
   const [formData, setFormData] = useState<Partial<ContactFormData>>({});
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [submitError, setSubmitError] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setErrors({});
+    setSubmitError(null);
 
     const result = ContactFormSchema.safeParse(formData);
     if (!result.success) {
@@ -44,9 +46,27 @@ export function ContactSection({ className }: ContactSectionProps) {
     }
 
     setIsSubmitting(true);
-    await new Promise((r) => setTimeout(r, 1000));
-    setIsSubmitting(false);
-    setIsSubmitted(true);
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(result.data),
+      });
+
+      if (!response.ok) {
+        const payload = await response.json().catch(() => ({}));
+        throw new Error(payload?.error || "Failed to send message");
+      }
+
+      setIsSubmitted(true);
+      setFormData({});
+    } catch (error) {
+      setSubmitError(
+        error instanceof Error ? error.message : "Something went wrong"
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   if (isSubmitted) {
@@ -104,56 +124,70 @@ export function ContactSection({ className }: ContactSectionProps) {
             <form onSubmit={handleSubmit} className="space-y-5">
               <div className="grid sm:grid-cols-2 gap-4">
                 <div>
-                  <Label>Name</Label>
-                  <Input
-                    placeholder="Your name"
-                    value={formData.name || ""}
-                    onChange={(e) =>
-                      setFormData({ ...formData, name: e.target.value })
-                    }
-                    className="mt-2"
-                  />
-                </div>
+                <Label>Name</Label>
+                <Input
+                  placeholder="Your name"
+                  value={formData.name || ""}
+                  onChange={(e) =>
+                    setFormData({ ...formData, name: e.target.value })
+                  }
+                  className="mt-2"
+                />
+                {errors.name && (
+                  <p className="mt-1 text-xs text-destructive">{errors.name}</p>
+                )}
+              </div>
 
-                <div>
-                  <Label>Company name</Label>
+              <div>
+                <Label>Company name</Label>
                   <Input
                     placeholder="Your company"
                     value={formData.company || ""}
                     onChange={(e) =>
-                      setFormData({ ...formData, company: e.target.value })
-                    }
-                    className="mt-2"
-                  />
-                </div>
+                    setFormData({ ...formData, company: e.target.value })
+                  }
+                  className="mt-2"
+                />
+                {errors.company && (
+                  <p className="mt-1 text-xs text-destructive">
+                    {errors.company}
+                  </p>
+                )}
               </div>
+            </div>
 
               <div className="grid sm:grid-cols-2 gap-4">
                 <div>
-                  <Label>Email</Label>
-                  <Input
-                    type="email"
-                    placeholder="Your email"
-                    value={formData.email || ""}
+                <Label>Email</Label>
+                <Input
+                  type="email"
+                  placeholder="Your email"
+                  value={formData.email || ""}
                     onChange={(e) =>
-                      setFormData({ ...formData, email: e.target.value })
-                    }
-                    className="mt-2"
-                  />
-                </div>
+                    setFormData({ ...formData, email: e.target.value })
+                  }
+                  className="mt-2"
+                />
+                {errors.email && (
+                  <p className="mt-1 text-xs text-destructive">{errors.email}</p>
+                )}
+              </div>
 
-                <div>
-                  <Label>Phone</Label>
-                  <Input
+              <div>
+                <Label>Phone</Label>
+                <Input
                     placeholder="Your phone"
                     value={formData.phone || ""}
                     onChange={(e) =>
-                      setFormData({ ...formData, phone: e.target.value })
-                    }
-                    className="mt-2"
-                  />
-                </div>
+                    setFormData({ ...formData, phone: e.target.value })
+                  }
+                  className="mt-2"
+                />
+                {errors.phone && (
+                  <p className="mt-1 text-xs text-destructive">{errors.phone}</p>
+                )}
               </div>
+            </div>
 
               <div>
                 <Label className="mb-2">Which ServiceNow services do you need?</Label>
@@ -162,9 +196,9 @@ export function ContactSection({ className }: ContactSectionProps) {
                     setFormData({ ...formData, service: value })
                   }
                 >
-                  <SelectTrigger>
-                    <SelectValue placeholder="ServiceNow Consulting" />
-                  </SelectTrigger>
+                <SelectTrigger>
+                  <SelectValue placeholder="ServiceNow Consulting" />
+                </SelectTrigger>
                   <SelectContent>
                     <SelectItem value="consulting">ServiceNow Consulting</SelectItem>
                     <SelectItem value="itsm">IT Service Management</SelectItem>
@@ -172,26 +206,36 @@ export function ContactSection({ className }: ContactSectionProps) {
                     <SelectItem value="csm">Customer Service</SelectItem>
                     <SelectItem value="hr">HR Service Delivery</SelectItem>
                     <SelectItem value="security">Security Operations</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
+                </SelectContent>
+              </Select>
+              {errors.service && (
+                <p className="mt-1 text-xs text-destructive">{errors.service}</p>
+              )}
+            </div>
 
-              <div>
-                <Label>Message</Label>
-                <Textarea
+            <div>
+              <Label>Message</Label>
+              <Textarea
                   rows={6}
                   placeholder="What can we help you with?"
                   value={formData.message || ""}
                   onChange={(e) =>
-                    setFormData({ ...formData, message: e.target.value })
-                  }
-                  className="mt-2 h-32"
-                />
-              </div>
+                  setFormData({ ...formData, message: e.target.value })
+                }
+                className="mt-2 h-32"
+              />
+              {errors.message && (
+                <p className="mt-1 text-xs text-destructive">{errors.message}</p>
+              )}
+            </div>
 
-              <Button
-                type="submit"
-                size="lg"
+            {submitError && (
+              <p className="text-sm text-destructive">{submitError}</p>
+            )}
+
+            <Button
+              type="submit"
+              size="lg"
                 className="w-full mt-4 bg-black text-white hover:bg-black/90"
                 disabled={isSubmitting}
               >

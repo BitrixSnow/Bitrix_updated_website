@@ -91,12 +91,7 @@ export default function ContactPage() {
       </section>
 
       {/* Contact Form */}
-      <ContactSection
-        title="Send us a"
-        highlight="message"
-        showImage={false}
-        className="bg-muted/30"
-      />
+      <ContactSection className="bg-muted/30" />
 
       {/* Map placeholder */}
       <section className="py-16 md:py-24">

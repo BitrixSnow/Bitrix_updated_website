@@ -75,6 +75,16 @@ const helpItems = [
   },
 ];
 
+const partnerLogos = [
+  { src: "/partner-logos/image 1.svg", alt: "Partner logo 1" },
+  { src: "/partner-logos/image 2.svg", alt: "Partner logo 2" },
+  { src: "/partner-logos/image 3.svg", alt: "Partner logo 3" },
+  { src: "/partner-logos/image 4.svg", alt: "Partner logo 4" },
+  { src: "/partner-logos/image 6.svg", alt: "Partner logo 6" },
+  { src: "/partner-logos/image 7.svg", alt: "Partner logo 7" },
+  { src: "/partner-logos/image 8.svg", alt: "Partner logo 8" },
+];
+
 export default function HomePage() {
   return (
     <PageTemplate>
@@ -103,6 +113,60 @@ export default function HomePage() {
         primaryCta={{ label: "Contact Us", href: "/contact" }}
         secondaryCta={{ label: "Book a Meeting", href: "/services" }}
       />
+
+      {/* Partners Carousel */}
+      <section className="pb-8 bg-white">
+        <div className="mx-auto w-full px-6">
+          <div className="rounded-2xl border bg-white px-6 py-4 shadow-sm overflow-hidden">
+            <div className="partners-track inline-flex items-center gap-10 whitespace-nowrap">
+              {partnerLogos.map((logo) => (
+                <div
+                  key={`partner-${logo.src}`}
+                  className="flex items-center justify-center"
+                >
+                  <img
+                    src={logo.src}
+                    alt={logo.alt}
+                    className="h-8 md:h-10 w-auto object-contain"
+                    loading="lazy"
+                  />
+                </div>
+              ))}
+              {partnerLogos.map((logo) => (
+                <div
+                  key={`partner-dup-${logo.src}`}
+                  aria-hidden="true"
+                  className="flex items-center justify-center"
+                >
+                  <img
+                    src={logo.src}
+                    alt={logo.alt}
+                    className="h-8 md:h-10 w-auto object-contain"
+                    loading="lazy"
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+        <style>{`
+          .partners-track {
+            animation: partners-scroll 28s linear infinite;
+            min-width: max-content;
+          }
+          .partners-track:hover {
+            animation-play-state: paused;
+          }
+          @keyframes partners-scroll {
+            0% {
+              transform: translateX(-50%);
+            }
+            100% {
+              transform: translateX(0%);
+            }
+          }
+        `}</style>
+      </section>
 
       {/* Capabilities Section */}
       <section className="py-16 md:py-24 bg-muted/30">

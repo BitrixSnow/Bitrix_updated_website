@@ -107,8 +107,18 @@ export type FAQItem = z.infer<typeof FAQItemSchema>;
 export const ContactFormSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
   email: z.string().email("Please enter a valid email"),
-  company: z.string().optional(),
-  phone: z.string().optional(),
+  company: z
+    .string()
+    .optional()
+    .refine((val) => !val || val.length >= 2, {
+      message: "Company name must be at least 2 characters",
+    }),
+  phone: z
+    .string()
+    .optional()
+    .refine((val) => !val || /^[+()0-9\s-]{7,}$/.test(val), {
+      message: "Please enter a valid phone number",
+    }),
   message: z.string().min(10, "Message must be at least 10 characters"),
   service: z.string().optional(),
 });

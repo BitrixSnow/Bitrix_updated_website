@@ -14,6 +14,7 @@ export const siteConfig = {
   contact: {
     email: "hr@bitrixsolutions.com",
     phone: "+91 7807629154",
+    address: "Chandigarh, India",
 
   },
 };
@@ -42,7 +43,16 @@ export const navigation: NavItem[] = [
   //   ],
   // },
   { label: "Industries", href: "/industries" },
-  { label: "Company", href: "/company" },
+  {
+    label: "Company",
+    href: "/company",
+    children: [
+      { label: "About Us", href: "/about" },
+      { label: "Careers", href: "/careers" },
+      { label: "Our team", href: "/our-team" },
+      { label: "Ace 2022", href: "/about#timeline" },
+    ],
+  },
   // { label: "About", href: "/about" },
   // { label: "Careers", href: "/careers" },
   { label: "Blog", href: "/blog" },

@@ -1,46 +1,23 @@
 import type { Metadata } from "next";
-import Image from "next/image";
-import { PageTemplate } from "@/components/templates";
-import { HeroSection, ContactSection } from "@/components/organisms";
-import { Container, SectionTitle, Icon } from "@/components/atoms";
-import { JobCard } from "@/components/molecules";
-import { jobPositions, teamMembers, siteConfig } from "@/lib/config/site";
-import { generateBreadcrumbJsonLd, generateJobPostingJsonLd } from "@/lib/seo/jsonld";
 import Link from "next/link";
+import { PageTemplate } from "@/components/templates";
+import { Container, Icon } from "@/components/atoms";
+import { JobCard } from "@/components/molecules";
+import { jobPositions, siteConfig } from "@/lib/config/site";
+import { generateBreadcrumbJsonLd, generateJobPostingJsonLd } from "@/lib/seo/jsonld";
 import { Button } from "@/components/ui/button";
 
 export const metadata: Metadata = {
   title: "Careers",
-  description: "Join the BITRIX team! Explore exciting career opportunities in ServiceNow consulting and implementation.",
+  description:
+    "Build your career with BITRIX. Explore open positions and join our ServiceNow experts.",
   openGraph: {
     title: `Careers | ${siteConfig.name}`,
-    description: "Join the BITRIX team! Explore exciting career opportunities.",
+    description:
+      "Build your career with BITRIX. Explore open positions and join our ServiceNow experts.",
     url: `${siteConfig.url}/careers`,
   },
 };
-
-const benefits = [
-  {
-    title: "Competitive Salary",
-    description: "Industry-leading compensation packages",
-    icon: "briefcase",
-  },
-  {
-    title: "Remote Flexibility",
-    description: "Work from anywhere with flexible hours",
-    icon: "map-pin",
-  },
-  {
-    title: "Learning & Growth",
-    description: "Certification support and training programs",
-    icon: "graduation-cap",
-  },
-  {
-    title: "Health Benefits",
-    description: "Comprehensive health and wellness coverage",
-    icon: "heart",
-  },
-];
 
 export default function CareersPage() {
   return (
@@ -75,154 +52,87 @@ export default function CareersPage() {
       ))}
 
       {/* Hero */}
-      <section className="py-16 md:py-24">
+      <section className="py-16 md:py-24 bg-white">
         <Container>
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <p className="text-sm text-muted-foreground mb-4">JOIN OUR TEAM</p>
-              <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-6">
-                BUILD <span className="text-primary">YOUR CAREER</span> WITH US
-              </h1>
-              <p className="text-lg text-muted-foreground mb-8">
-                Join a team of passionate professionals dedicated to transforming businesses
-                through innovative ServiceNow solutions. We're always looking for talented
-                individuals to grow with us.
-              </p>
-              <Button asChild size="lg">
-                <Link href="#positions">
-                  View Open Positions
-                  <Icon name="arrow-right" size={18} className="ml-2" />
-                </Link>
-              </Button>
-            </div>
-            <div className="relative aspect-[4/3]">
-              <Image
-                src="/images/team/member-1.jpg"
-                alt="Join our team"
-                fill
-                className="object-cover rounded-lg"
-                priority
-              />
-            </div>
+          <div className="mb-8 flex items-center gap-2 text-sm text-muted-foreground">
+            <Link
+              href="/"
+              className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-foreground/10 bg-white/80 shadow-sm"
+              aria-label="Home"
+            >
+              <Icon name="home" size={16} />
+            </Link>
+            <span className="text-foreground/40">›</span>
+            <span className="font-medium text-foreground/70">Careers</span>
           </div>
-        </Container>
-      </section>
 
-      {/* Why Join Us */}
-      <section className="py-16 md:py-24 bg-muted/30">
-        <Container>
-          <SectionTitle
-            title="Why join"
-            highlight="BITRIX?"
-            subtitle="We offer more than just a job - we offer a career with purpose."
-            align="center"
-            className="mb-12"
-          />
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {benefits.map((benefit) => (
-              <div key={benefit.title} className="text-center p-6 bg-background rounded-lg">
-                <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Icon name={benefit.icon} size={24} className="text-primary" />
-                </div>
-                <h3 className="font-semibold mb-2">{benefit.title}</h3>
-                <p className="text-sm text-muted-foreground">{benefit.description}</p>
-              </div>
-            ))}
+          <div className="inline-flex items-center gap-2 rounded-full border px-4 py-1 text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+            <span className="h-2 w-2 rounded-full bg-primary" />
+            Careers
           </div>
+
+          <h1 className="mt-6 text-4xl md:text-5xl font-bold tracking-tight">
+            BUILD <span className="text-primary">YOUR CAREER</span> WITH US
+          </h1>
+          <p className="mt-4 text-muted-foreground max-w-2xl">
+            Join a team where innovation, collaboration, and growth shape everything we do.
+          </p>
         </Container>
       </section>
 
       {/* Open Positions */}
-      <section id="positions" className="py-16 md:py-24">
+      <section id="positions" className="pb-16 md:pb-24 bg-white">
         <Container>
-          <SectionTitle
-            title="Open"
-            highlight="Positions"
-            subtitle="Explore our current job openings and find your perfect role."
-            className="mb-12"
-          />
-          <div className="space-y-4">
-            {jobPositions.map((job) => (
-              <JobCard key={job.id} job={job} />
+          <div className="text-2xl font-semibold mb-6">Open positions</div>
+
+          <div className="grid md:grid-cols-3 gap-4 mb-10">
+            {["All locations", "All employment types", "All work types"].map((label) => (
+              <div
+                key={label}
+                className="flex items-center justify-between rounded-xl border bg-white px-4 py-2 text-sm text-muted-foreground"
+              >
+                <span>{label}</span>
+                <Icon name="chevron-down" size={16} />
+              </div>
             ))}
           </div>
-          <div className="mt-12 text-center">
-            <p className="text-muted-foreground mb-4">
-              Don't see a position that fits? We're always interested in hearing from talented professionals.
-            </p>
-            <Button asChild variant="outline">
-              <Link href="/contact">
-                Send Your Resume
-                <Icon name="arrow-right" size={18} className="ml-2" />
-              </Link>
-            </Button>
-          </div>
-        </Container>
-      </section>
 
-      {/* Culture */}
-      <section className="py-16 md:py-24 bg-muted/30">
-        <Container>
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <SectionTitle
-                title="Our"
-                highlight="Culture"
-                className="mb-6"
-              />
-              <p className="text-muted-foreground mb-6">
-                At BITRIX, we believe in fostering a culture of innovation, collaboration,
-                and continuous learning. Our team members are empowered to take ownership,
-                share ideas, and grow both personally and professionally.
-              </p>
-              <ul className="space-y-3">
-                {[
-                  "Collaborative and inclusive environment",
-                  "Regular team events and activities",
-                  "Open communication and feedback",
-                  "Work-life balance focus",
-                ].map((item) => (
-                  <li key={item} className="flex items-center gap-3">
-                    <Icon name="check" size={16} className="text-primary" />
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div className="grid grid-cols-2 gap-4">
-              {teamMembers.slice(0, 4).map((member, index) => (
-                <div
-                  key={member.id}
-                  className="relative aspect-square rounded-lg overflow-hidden bg-muted"
-                >
-                  <Image
-                    src={member.image || "/placeholder.svg"}
-                    alt={member.name}
-                    fill
-                    className="object-cover"
-                  />
+          <div className="space-y-10">
+            {["Department name", "Department name"].map((dept, index) => (
+              <div key={`${dept}-${index}`}>
+                <h3 className="text-lg font-semibold mb-4">{dept}</h3>
+                <div className="space-y-4">
+                  {jobPositions.map((job) => (
+                    <div
+                      key={`${dept}-${job.id}`}
+                      className="rounded-2xl border bg-white px-5 py-4 shadow-sm flex flex-col md:flex-row md:items-center md:justify-between gap-4"
+                    >
+                      <div>
+                        <p className="font-semibold">Position name</p>
+                        <div className="mt-2 flex flex-wrap items-center gap-4 text-xs text-muted-foreground">
+                          <span className="inline-flex items-center gap-2">
+                            <Icon name="map-pin" size={14} />
+                            Location
+                          </span>
+                          <span className="inline-flex items-center gap-2">
+                            <Icon name="briefcase" size={14} />
+                            Employment type
+                          </span>
+                          <span className="inline-flex items-center gap-2">
+                            <Icon name="clock" size={14} />
+                            Work type
+                          </span>
+                        </div>
+                      </div>
+                      <Button variant="outline" size="sm">
+                        Details
+                      </Button>
+                    </div>
+                  ))}
                 </div>
-              ))}
-            </div>
+              </div>
+            ))}
           </div>
-        </Container>
-      </section>
-
-      {/* CTA */}
-      <section className="py-16 md:py-24 bg-foreground text-background">
-        <Container className="text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Ready to start your <span className="text-primary">journey?</span>
-          </h2>
-          <p className="text-background/70 mb-8 max-w-2xl mx-auto">
-            Take the next step in your career and join our team of ServiceNow experts.
-          </p>
-          <Button asChild size="lg" variant="outline" className="border-background text-background hover:bg-background hover:text-foreground bg-transparent">
-            <Link href="#positions">
-              Apply Now
-              <Icon name="arrow-right" size={18} className="ml-2" />
-            </Link>
-          </Button>
         </Container>
       </section>
     </PageTemplate>

@@ -10,6 +10,7 @@ import { navigation } from "@/lib/config/site";
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const mobileSheetId = "mobile-nav-sheet";
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -34,13 +35,21 @@ export function Header() {
 
         {/* Mobile Navigation */}
         <Sheet open={isOpen} onOpenChange={setIsOpen}>
-          <SheetTrigger asChild className="md:hidden">
+          <SheetTrigger
+            asChild
+            className="md:hidden"
+            aria-controls={mobileSheetId}
+          >
             <Button variant="ghost" size="icon">
               <Icon name="menu" size={24} />
               <span className="sr-only">Toggle menu</span>
             </Button>
           </SheetTrigger>
-          <SheetContent side="right" className="w-[300px] sm:w-[400px]">
+          <SheetContent
+            id={mobileSheetId}
+            side="right"
+            className="w-[300px] sm:w-[400px]"
+          >
             <nav className="flex flex-col gap-4 mt-8">
               {navigation.map((item) => (
                 <div key={item.href}>

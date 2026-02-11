@@ -23,11 +23,32 @@ export function NavLink({ item, className, variant = "default" }: NavLinkProps) 
   const isActive =
     pathname === item.href || pathname.startsWith(`${item.href}/`);
   const isServicesMenu = item.label === "Services" || item.href === "/services";
+  const isCompanyMenu = item.label === "Company" || item.href === "/company";
+  const dropdownBaseId = `nav-dropdown-${item.href
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)/g, "")}`;
+
+  const getCompanyIcon = (label: string) => {
+    switch (label) {
+      case "About Us":
+        return "building";
+      case "Careers":
+        return "briefcase";
+      case "Our team":
+        return "users";
+      case "Ace 2022":
+        return "calendar";
+      default:
+        return "building";
+    }
+  };
 
   if (item.children && item.children.length > 0) {
     return (
       <DropdownMenu>
         <DropdownMenuTrigger
+          id={`${dropdownBaseId}-trigger`}
           className={cn(
             "flex items-center gap-1 text-sm font-medium transition-colors outline-none",
             isActive
@@ -42,9 +63,14 @@ export function NavLink({ item, className, variant = "default" }: NavLinkProps) 
           <Icon name="chevron-down" size={14} />
         </DropdownMenuTrigger>
         <DropdownMenuContent
+          id={`${dropdownBaseId}-content`}
           align="start"
           className={cn(
-            isServicesMenu ? "w-[340px] rounded-2xl p-0" : "w-56",
+            isServicesMenu
+              ? "w-[340px] rounded-2xl p-0"
+              : isCompanyMenu
+                ? "w-[360px] rounded-2xl p-0"
+                : "w-56",
             "overflow-hidden"
           )}
         >
@@ -73,6 +99,31 @@ export function NavLink({ item, className, variant = "default" }: NavLinkProps) 
                                     ? "settings"
                                     : "code"
                           }
+                          size={18}
+                          className="text-primary"
+                        />
+                      </div>
+                      <span className="leading-snug">{child.label}</span>
+                    </Link>
+                  </DropdownMenuItem>
+                ))}
+              </div>
+            </div>
+          ) : isCompanyMenu ? (
+            <div>
+              <div className="px-5 py-4 border-b">
+                <p className="text-sm font-semibold">About company</p>
+              </div>
+              <div className="grid grid-cols-2 gap-2 p-4">
+                {item.children.map((child) => (
+                  <DropdownMenuItem key={child.href} asChild>
+                    <Link
+                      href={child.href}
+                      className="flex items-center gap-3 rounded-xl px-3 py-3 text-sm text-foreground/80 hover:bg-muted/60 focus:bg-muted/60"
+                    >
+                      <div className="h-9 w-9 rounded-xl bg-[#f6f7fb] flex items-center justify-center">
+                        <Icon
+                          name={getCompanyIcon(child.label)}
                           size={18}
                           className="text-primary"
                         />

@@ -33,11 +33,30 @@ export function BlogCard({ post, className, variant = "default" }: BlogCardProps
             fill
             className="object-cover transition-transform duration-300 group-hover:scale-105"
           />
-          <Badge className="absolute top-4 left-4 bg-primary text-primary-foreground">
-            {post.category}
-          </Badge>
+          {variant === "featured" && (
+            <Badge className="absolute top-4 left-4 bg-primary text-primary-foreground">
+              {post.category}
+            </Badge>
+          )}
         </div>
         <CardContent className="p-5">
+          {variant === "default" && (
+            <div className="flex items-center justify-between gap-3">
+              <Badge
+                variant="outline"
+                className="rounded-full border-primary/20 bg-primary/10 text-primary text-xs"
+              >
+                {post.category}
+              </Badge>
+              <span className="flex h-8 w-8 items-center justify-center rounded-full border border-border/70 text-muted-foreground transition-all group-hover:border-primary/40 group-hover:text-primary">
+                <Icon
+                  name="arrow-right"
+                  size={14}
+                  className="transition-transform duration-200 group-hover:translate-x-0.5"
+                />
+              </span>
+            </div>
+          )}
           <div className="flex items-center gap-4 text-muted-foreground text-xs mb-3">
             <span className="flex items-center gap-1">
               <Icon name="calendar" size={14} />
@@ -60,14 +79,16 @@ export function BlogCard({ post, className, variant = "default" }: BlogCardProps
           <p className="text-muted-foreground text-sm line-clamp-2">
             {post.excerpt}
           </p>
-          <div className="mt-4 flex items-center text-primary text-sm font-medium">
-            Read more
-            <Icon
-              name="arrow-right"
-              size={16}
-              className="ml-2 transition-transform group-hover:translate-x-1"
-            />
-          </div>
+          {variant === "featured" && (
+            <div className="mt-4 flex items-center text-primary text-sm font-medium">
+              Read more
+              <Icon
+                name="arrow-right"
+                size={16}
+                className="ml-2 transition-transform group-hover:translate-x-1"
+              />
+            </div>
+          )}
         </CardContent>
       </Card>
     </Link>

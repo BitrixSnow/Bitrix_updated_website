@@ -1,11 +1,15 @@
 import type { Metadata } from "next";
+import Image from "next/image";
+import Link from "next/link";
 import { PageTemplate } from "@/components/templates";
-import { HeroSection, NewsletterSection } from "@/components/organisms";
-import { Container, SectionTitle } from "@/components/atoms";
+import { NewsletterSection } from "@/components/organisms";
+import { Container, Icon } from "@/components/atoms";
 import { BlogCard } from "@/components/molecules";
 import { blogPosts, siteConfig } from "@/lib/config/site";
 import { generateBreadcrumbJsonLd } from "@/lib/seo/jsonld";
 import { Badge } from "@/components/ui/badge";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
 
 export const metadata: Metadata = {
   title: "Blog",
@@ -43,21 +47,57 @@ export default function BlogPage() {
       />
 
       {/* Hero */}
-      <section className="py-16 md:py-24 bg-muted/30">
+      <section className="py-16 md:py-24 bg-white">
         <Container>
-          <div className="text-center mb-8">
-            <p className="text-sm text-muted-foreground mb-4">OUR BLOG</p>
-            <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-6">
-              READ OUR LATEST <span className="text-primary">BLOG POSTS</span>
-            </h1>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Stay up to date with the latest insights, trends, and best practices
-              in ServiceNow and digital transformation.
-            </p>
+          <div className="mb-8 flex items-center gap-2 text-sm text-muted-foreground">
+            <Link
+              href="/"
+              className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-foreground/10 bg-white/80 shadow-sm"
+              aria-label="Home"
+            >
+              <Icon name="home" size={16} />
+            </Link>
+            <span className="text-foreground/40">›</span>
+            <span className="font-medium text-foreground/70">Blog</span>
           </div>
 
-          {/* Categories */}
-          <div className="flex flex-wrap justify-center gap-2">
+          <div className="grid lg:grid-cols-[1.05fr_0.95fr] gap-12 items-center">
+            <div>
+              <h1 className="text-4xl md:text-5xl font-bold tracking-tight leading-tight">
+                READ OUR LATEST{" "}
+                <span className="block text-primary">BLOG POSTS</span>
+              </h1>
+              <p className="mt-5 text-muted-foreground max-w-xl">
+                Stay informed with the latest insights subscribe to receive updates
+                straight to your inbox.
+              </p>
+              <div className="mt-6 flex w-full max-w-md items-center gap-3">
+                <Input placeholder="Email" />
+                <Button className="bg-foreground text-background hover:bg-foreground/90">
+                  Subscribe
+                </Button>
+              </div>
+            </div>
+
+            <div className="relative">
+              <div className="relative rounded-3xl bg-[#f6f7fb] p-8 aspect-[5/4]">
+                <Image
+                  src="/images/img.svg"
+                  alt="Blog illustration"
+                  fill
+                  className="object-contain"
+                  priority
+                />
+              </div>
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      {/* Categories */}
+      <section className="pb-6 bg-white">
+        <Container>
+          <div className="flex flex-wrap gap-2">
             {categories.map((category, index) => (
               <Badge
                 key={category}
@@ -71,55 +111,16 @@ export default function BlogPage() {
         </Container>
       </section>
 
-      {/* Featured Post */}
-      <section className="py-16 md:py-24">
-        <Container>
-          <SectionTitle
-            title="Featured"
-            highlight="Article"
-            className="mb-8"
-          />
-          {blogPosts[0] && (
-            <BlogCard post={blogPosts[0]} variant="featured" className="mb-12" />
-          )}
-        </Container>
-      </section>
-
       {/* Blog Grid */}
-      <section className="py-16 md:py-24 bg-muted/30">
+      <section className="pb-16 md:pb-24 bg-white">
         <Container>
-          <SectionTitle
-            title="Latest"
-            highlight="Articles"
-            subtitle="Explore our collection of articles and insights"
-            className="mb-12"
-          />
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {blogPosts.map((post) => (
               <BlogCard key={post.id} post={post} />
             ))}
           </div>
-
-          {/* Pagination placeholder */}
-          <div className="mt-12 flex justify-center gap-2">
-            {[1, 2, 3].map((page) => (
-              <button
-                key={page}
-                className={`w-10 h-10 rounded-lg ${
-                  page === 1
-                    ? "bg-primary text-primary-foreground"
-                    : "bg-background border hover:bg-muted"
-                }`}
-              >
-                {page}
-              </button>
-            ))}
-          </div>
         </Container>
       </section>
-
-      {/* Newsletter */}
-      <NewsletterSection />
     </PageTemplate>
   );
 }

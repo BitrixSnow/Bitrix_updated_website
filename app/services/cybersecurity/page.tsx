@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import { PageTemplate } from "@/components/templates";
 import { ContactSection } from "@/components/organisms";
 import { Container, Icon } from "@/components/atoms";
@@ -50,6 +51,18 @@ export default function CybersecurityPage() {
       {/* Hero */}
       <section className="py-16 md:py-24 bg-white">
         <Container>
+          <div className="mb-8 flex items-center gap-2 text-sm text-muted-foreground">
+            <Link
+              href="/"
+              className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-foreground/10 bg-white/80 shadow-sm"
+              aria-label="Home"
+            >
+              <Icon name="home" size={16} />
+            </Link>
+            <span className="text-foreground/40">›</span>
+            <span className="font-medium text-foreground/70">Cybersecurity</span>
+          </div>
+
           <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-12 items-center">
             <div>
               <div className="inline-flex items-center gap-2 rounded-full border px-4 py-1 text-xs font-semibold uppercase tracking-widest text-muted-foreground">
