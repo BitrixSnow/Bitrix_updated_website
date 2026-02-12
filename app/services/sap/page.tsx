@@ -48,11 +48,21 @@ const sapChallenges = [
 ];
 
 const specialties = [
-  { title: "Customer Satisfaction", icon: "users" },
-  { title: "Cost Optimisation", icon: "briefcase" },
-  { title: "Assured Commitment", icon: "shield" },
-  { title: "Technical Excellence", icon: "settings" },
-  { title: "Skilled Experts", icon: "check" },
+  { icon: "/icon-3 (2).svg", title: "Customer Satisfaction" }, 
+  { icon: "/hand-coin-line.svg", title: "Cost Optimisation" },
+  { icon: "/shield-check-line.svg", title: "Assured Commitment" },
+  { icon: "/icon (1).svg", title: "Technical Excellence" }, 
+  { icon: "/icon (2).svg", title: "Skilled Experts" }, 
+];
+
+const whatWeDoItems = [
+  "Chalking out future roadmap",
+  "System sizing and landscape design",
+  "Business blueprint and realization",
+  "Integration with third-party systems",
+  "3PL through EDI integration",
+  "Data cleansing and migration",
+  "Documentation and user training",
 ];
 
 export default function SAPPage() {
@@ -86,9 +96,9 @@ export default function SAPPage() {
       />
 
       {/* Hero */}
-      <section className="py-16 md:py-24 bg-white">
+      <section className="py-12 md:py-18 bg-white">
         <Container>
-          <div className="mb-8 flex items-center gap-2 text-sm text-muted-foreground">
+          <div className="mb-4 flex items-center gap-2 text-sm text-muted-foreground">
             <Link
               href="/"
               className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-foreground/10 bg-white/80 shadow-sm"
@@ -120,7 +130,7 @@ export default function SAPPage() {
             <div className="relative">
               <div className="relative rounded-3xl bg-[#f6f7fb] p-8 aspect-[5/4]">
                 <Image
-                  src="/images/hero-img.svg"
+                  src="/img (2).svg"
                   alt="SAP implementation illustration"
                   fill
                   className="object-contain"
@@ -167,6 +177,56 @@ export default function SAPPage() {
         </Container>
       </section>
 
+      {/* What We Do */}
+      <section className="py-16 md:py-24 bg-white">
+        <Container>
+          <div className="grid lg:grid-cols-[1.05fr_0.95fr] gap-12 items-start">
+            <div>
+              <div className="inline-flex items-center gap-2 rounded-full border px-4 py-1 text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+                <span className="h-2 w-2 rounded-full bg-primary" />
+                What We Do
+              </div>
+              <h2 className="mt-6 text-3xl md:text-4xl font-bold tracking-tight">
+                What we do <span className="text-primary">&amp; how we do?</span>
+              </h2>
+              <ul className="mt-6 space-y-3">
+                {whatWeDoItems.map((item) => (
+                  <li key={item} className="flex items-center gap-3 text-sm md:text-base text-foreground/80">
+                    <span className="flex h-5 w-5 items-center justify-center rounded-full bg-primary/10">
+                      <Icon name="check" size={12} className="text-primary" />
+                    </span>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="space-y-4 text-sm md:text-base text-muted-foreground leading-relaxed">
+              <p>
+                For successful implementations, it is essential for businesses to
+                consider and follow a plan. We at Bitrix can help you with this
+                planning and execute the project for a successful rollout.
+              </p>
+              <p>
+                Right from helping you with project planning, designing business
+                blueprints, rolling out implementation, to testing integrations and
+                helping you with final preparations, we stand by your side assisting
+                you in Go Live and continuing providing support services post Go Live as well.
+              </p>
+              <p>
+                Since there is no one-size-fits-all, we can help you customize the
+                solutions to suit your business requirements.
+              </p>
+              <p>
+                Our expertise, agility, project deployment capabilities, and affordable
+                pricing are an advantageous and profitable combination for any modern
+                company that wants to harness the power of technology.
+              </p>
+            </div>
+          </div>
+        </Container>
+      </section>
+
       {/* Specialties */}
       <section className="py-16 md:py-24 bg-white">
         <Container>
@@ -191,10 +251,16 @@ export default function SAPPage() {
                 key={item.title}
                 className="rounded-xl border bg-white p-4 flex items-center gap-3 shadow-sm"
               >
-                <div className="h-10 w-10 rounded-lg bg-[#f6f7fb] flex items-center justify-center">
-                  <Icon name={item.icon} size={18} className="text-primary" />
+                <div className="w-12 h-12 rounded-xl bg-muted flex items-center justify-center">
+                  <img
+                    src={item.icon}
+                    alt={`${item.title} icon`}
+                    className="h-8 w-8"
+                  />
                 </div>
-                <p className="text-sm font-semibold">{item.title}</p>
+                <h3 className="text-base md:text-lg font-semibold text-black/90">
+                  {item.title}
+                </h3>
               </div>
             ))}
           </div>

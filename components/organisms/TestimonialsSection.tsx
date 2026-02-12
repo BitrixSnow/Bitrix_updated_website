@@ -79,7 +79,7 @@ export function TestimonialsSection({
             <div key={testimonial.id} className="min-w-[280px] max-w-[360px] flex-1 snap-start">
               <TestimonialCard
                 testimonial={testimonial}
-                className="h-full border border-foreground/10 bg-white shadow-sm"
+                className="h-full"
               />
             </div>
           ))}

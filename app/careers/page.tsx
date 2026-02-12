@@ -52,7 +52,7 @@ export default function CareersPage() {
       ))}
 
       {/* Hero */}
-      <section className="py-16 md:py-24 bg-white">
+      <section className="py-12 md:py-18 bg-white">
         <Container>
           <div className="mb-8 flex items-center gap-2 text-sm text-muted-foreground">
             <Link

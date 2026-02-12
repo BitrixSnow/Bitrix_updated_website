@@ -48,6 +48,16 @@ const serviceHighlights = [
   },
 ];
 
+const partnerLogos = [
+  { src: "/partner-logos/image 1.svg", alt: "Partner logo 1" },
+  { src: "/partner-logos/image 2.svg", alt: "Partner logo 2" },
+  { src: "/partner-logos/image 3.svg", alt: "Partner logo 3" },
+  { src: "/partner-logos/image 4.svg", alt: "Partner logo 4" },
+  { src: "/partner-logos/image 6.svg", alt: "Partner logo 6" },
+  { src: "/partner-logos/image 7.svg", alt: "Partner logo 7" },
+  { src: "/partner-logos/image 8.svg", alt: "Partner logo 8" },
+];
+
 export default function AboutPage() {
   return (
     <PageTemplate>
@@ -71,7 +81,7 @@ export default function AboutPage() {
       />
 
       {/* Hero */}
-      <section className="py-16 md:py-24 bg-white">
+      <section className="py-12 md:py-18 bg-white">
         <Container>
           <div className="mb-8 flex items-center gap-2 text-sm text-muted-foreground">
             <Link
@@ -99,10 +109,10 @@ export default function AboutPage() {
             <div className="relative">
               <div className="relative rounded-3xl bg-[#f6f7fb] p-8 aspect-[5/4]">
                 <Image
-                  src="/images/hero-illustration.jpg"
+                  src="/img (6).svg"
                   alt="About Bitrix illustration"
                   fill
-                  className="object-contain"
+                  className="object-cover"
                   priority
                 />
               </div>
@@ -112,7 +122,7 @@ export default function AboutPage() {
       </section>
 
       {/* Logo Strip */}
-      <section className="pb-12 md:pb-16 bg-white">
+      {/* <section className="pb-12 md:pb-16 bg-white">
         <Container>
           <div className="rounded-2xl border bg-white px-6 py-4 shadow-sm">
             <div className="flex flex-wrap items-center justify-between gap-4 text-sm text-muted-foreground">
@@ -124,6 +134,60 @@ export default function AboutPage() {
             </div>
           </div>
         </Container>
+      </section> */}
+
+      {/* Partners Carousel */}
+      <section className="pb-8 bg-white">
+        <div className="mx-auto w-full px-6">
+          <div className="rounded-2xl border bg-white px-6 py-4 shadow-sm overflow-hidden">
+            <div className="partners-track inline-flex items-center gap-10 whitespace-nowrap">
+              {partnerLogos.map((logo) => (
+                <div
+                  key={`partner-${logo.src}`}
+                  className="flex items-center justify-center"
+                >
+                  <img
+                    src={logo.src}
+                    alt={logo.alt}
+                    className="h-8 md:h-10 w-auto object-contain"
+                    loading="lazy"
+                  />
+                </div>
+              ))}
+              {partnerLogos.map((logo) => (
+                <div
+                  key={`partner-dup-${logo.src}`}
+                  aria-hidden="true"
+                  className="flex items-center justify-center"
+                >
+                  <img
+                    src={logo.src}
+                    alt={logo.alt}
+                    className="h-8 md:h-10 w-auto object-contain"
+                    loading="lazy"
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+        <style>{`
+          .partners-track {
+            animation: partners-scroll 28s linear infinite;
+            min-width: max-content;
+          }
+          .partners-track:hover {
+            animation-play-state: paused;
+          }
+          @keyframes partners-scroll {
+            0% {
+              transform: translateX(-50%);
+            }
+            100% {
+              transform: translateX(0%);
+            }
+          }
+        `}</style>
       </section>
 
       {/* About */}
@@ -204,7 +268,7 @@ export default function AboutPage() {
           <div className="grid lg:grid-cols-[1.05fr_0.95fr] gap-12 items-center">
             <div>
               <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
-                <span className="text-primary">ServiceNow</span> implementation partner
+                <span className="text-primary">ServiceNow</span> implementation <span className="text-primary">partner</span>
               </h2>
               <p className="mt-4 text-muted-foreground leading-relaxed">
                 As a ServiceNow Premier Partner, we have implemented the platform
@@ -219,10 +283,10 @@ export default function AboutPage() {
             <div className="relative">
               <div className="relative rounded-3xl bg-[#f6f7fb] p-8 aspect-[5/4]">
                 <Image
-                  src="/images/hero-img.svg"
+                  src="/imgContainer (1).svg"
                   alt="ServiceNow implementation illustration"
                   fill
-                  className="object-contain"
+                  className="object-cover h-5 w-5"
                 />
               </div>
             </div>

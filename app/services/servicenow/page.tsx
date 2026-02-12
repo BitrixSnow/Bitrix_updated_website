@@ -85,7 +85,7 @@ export default function ServicesPage() {
         titleSuffix="IMPACT"
         description="We deliver scalable digital solutions that help businesses streamline operations and accelerate sustainable growth."
         variant="default"
-        image="./images/img.svg"
+        image="/img (4).svg"
         
       />
 

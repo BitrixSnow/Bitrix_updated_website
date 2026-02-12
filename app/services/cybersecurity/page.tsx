@@ -49,9 +49,9 @@ export default function CybersecurityPage() {
       />
 
       {/* Hero */}
-      <section className="py-16 md:py-24 bg-white">
+      <section className="py-12 md:py-18 bg-white">
         <Container>
-          <div className="mb-8 flex items-center gap-2 text-sm text-muted-foreground">
+          <div className="mb-4 flex items-center gap-2 text-sm text-muted-foreground">
             <Link
               href="/"
               className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-foreground/10 bg-white/80 shadow-sm"
@@ -85,7 +85,7 @@ export default function CybersecurityPage() {
             <div className="relative">
               <div className="relative rounded-3xl bg-[#f6f7fb] p-8 aspect-[5/4]">
                 <Image
-                  src="/images/hero-img.svg"
+                  src="/img (1).svg"
                   alt="SOC monitoring illustration"
                   fill
                   className="object-contain"
@@ -103,16 +103,16 @@ export default function CybersecurityPage() {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="relative aspect-[4/3] rounded-3xl bg-white shadow-sm p-8">
               <Image
-                src="/images/hero-illustration.jpg"
+                src="/imgContainer.svg"
                 alt="Cybersecurity service illustration"
                 fill
-                className="object-contain"
+                className="object-cover"
               />
             </div>
             <div>
               <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
-                Get <span className="text-primary">started</span> the fast, easy,
-                and economical way with Bitrix.
+                Get <span className="text-primary">started the fast, easy,
+                and economical way </span> with Bitrix.
               </h2>
               <p className="mt-5 text-muted-foreground leading-relaxed">
                 Skip the time, hassle, and expense of setting up a SOC and rely on

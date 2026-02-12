@@ -130,9 +130,9 @@ export default function SalesforcePage() {
       />
 
       {/* Hero */}
-      <section className="py-16 md:py-24 bg-white">
+      <section className="py-12 md:py-18 bg-white">
         <Container>
-          <div className="mb-8 flex items-center gap-2 text-sm text-muted-foreground">
+          <div className="mb-4 flex items-center gap-2 text-sm text-muted-foreground">
             <Link
               href="/"
               className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-foreground/10 bg-white/80 shadow-sm"
@@ -159,7 +159,7 @@ export default function SalesforcePage() {
             <div className="relative">
               <div className="relative rounded-3xl bg-[#f6f7fb] p-8 aspect-[5/4]">
                 <Image
-                  src="/images/img.svg"
+                  src="/img (3).svg"
                   alt="Salesforce services illustration"
                   fill
                   className="object-contain"
@@ -179,9 +179,9 @@ export default function SalesforcePage() {
               <Link
                 key={service.title}
                 href={service.href}
-                className="rounded-2xl border bg-white p-5 shadow-sm flex gap-4"
+                className="rounded-2xl border bg-white p-5 shadow-sm flex gap-4 items-stretch"
               >
-                <div className="h-11 w-11 rounded-xl border bg-[#f6f7fb] flex items-center justify-center">
+                <div className="h-12 w-12 rounded-xl border bg-[#f6f7fb] flex items-center justify-center">
                   <Icon name={service.icon} size={18} className="text-primary" />
                 </div>
                 <div>

@@ -93,10 +93,10 @@ export default function IndustriesPage() {
             <div className="relative">
               <div className="relative rounded-3xl bg-[#f6f7fb] p-8 aspect-[5/4]">
                 <Image
-                  src="/images/img.svg"
+                  src="/img (5).svg"
                   alt="Industry solutions illustration"
                   fill
-                  className="object-contain"
+                  className="object-cover"
                   priority
                 />
               </div>

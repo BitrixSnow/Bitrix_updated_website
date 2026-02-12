@@ -13,31 +13,29 @@ export function TestimonialCard({
   className,
 }: TestimonialCardProps) {
   return (
-    <Card className={cn("h-full", className)}>
-      <CardContent className="p-6 flex flex-col h-full">
-        <div className="mb-4 flex items-center gap-1">
-          {testimonial.rating &&
-            Array.from({ length: testimonial.rating }).map((_, i) => (
-              <Icon
-                key={i}
-                name="star"
-                size={16}
-                className="text-yellow-500 fill-yellow-500"
-              />
-            ))}
-        </div>
-        <Icon name="quote" size={32} className="text-primary/20 mb-4" />
-        <p className="text-foreground leading-relaxed mb-6 flex-1">
+    <Card className={cn("h-full rounded-2xl border border-foreground/10 bg-white", className)}>
+      <CardContent className="p-6 md:p-8 flex flex-col h-full">
+        <Icon name="quote" size={36} className="text-rose-500 mb-5" />
+        <p className="text-sm md:text-base text-foreground/80 leading-relaxed mb-6 flex-1">
           {testimonial.content}
         </p>
-        <div className="flex items-center gap-3 pt-4 border-t">
-          <div className="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center text-primary font-semibold">
-            {testimonial.author.charAt(0)}
-          </div>
+        <div className="flex items-center gap-3">
+          {testimonial.avatar ? (
+            <img
+              src={testimonial.avatar}
+              alt={testimonial.author}
+              className="h-11 w-11 rounded-full object-cover"
+              loading="lazy"
+            />
+          ) : (
+            <div className="h-11 w-11 rounded-full bg-muted flex items-center justify-center text-foreground font-semibold">
+              {testimonial.author.charAt(0)}
+            </div>
+          )}
           <div>
-            <p className="font-semibold text-sm">{testimonial.author}</p>
+            <p className="font-semibold text-sm text-foreground">{testimonial.author}</p>
             <p className="text-muted-foreground text-xs">
-              {testimonial.role}, {testimonial.company}
+              {testimonial.role}
             </p>
           </div>
         </div>

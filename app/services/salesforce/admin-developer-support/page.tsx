@@ -123,7 +123,7 @@ export default function AdminDeveloperSupportPage() {
         titleSuffix="& MAINTENANCE"
         highlightSecond="SERVICES"
         description="Unlock seamless Salesforce deployment with top-tier admin and development support services for maximum efficiency."
-        image="/images/img.svg"
+        image="/salesforce.svg"
         primaryCta={{ label: "Talk to us", href: "/contact" }}
       />
 
@@ -205,7 +205,7 @@ export default function AdminDeveloperSupportPage() {
       </section>
 
       {/* Impact */}
-      <section className="py-12 md:py-20 bg-white">
+      {/* <section className="py-12 md:py-20 bg-white">
         <Container>
           <div className="text-center max-w-3xl mx-auto">
             <div className="inline-flex items-center gap-2 rounded-full border px-4 py-1 text-xs font-semibold uppercase tracking-widest text-muted-foreground">
@@ -232,6 +232,64 @@ export default function AdminDeveloperSupportPage() {
                 <p className="mt-2 text-sm text-muted-foreground">
                   {stat.description}
                 </p>
+              </div>
+            ))}
+          </div>
+        </Container>
+      </section> */}
+      <section className="py-16 md:py-24 bg-white text-foreground">
+        <Container>
+          <div className="text-center max-w-3xl mx-auto">
+            <span className="inline-flex items-center gap-2 rounded-full border border-border px-4 py-1 text-xs uppercase tracking-wide text-muted-foreground">
+              <span className="h-2 w-2 rounded-full bg-rose-500" />
+              Our Impact
+            </span>
+            <h2 className="mt-6 text-3xl md:text-4xl lg:text-5xl font-semibold text-black/90">
+              We <span className="text-rose-500">Innovate</span> and{" "}
+              <span className="text-rose-500">Transform</span>
+            </h2>
+            <p className="mt-4 text-muted-foreground">
+              Trusted by many leading organizations, we delivered 40+ ServiceNow instances
+              with 180+ modules, 12 scoped applications, 3 CRM applications, and 25+ web
+              applications. We have a customer base of 30+ and 9 partners across the globe.
+            </p>
+          </div>
+
+          <div className="mt-12 grid md:grid-cols-2 gap-10">
+            {[
+              {
+                metric: "25",
+                title: "Customer Satisfaction",
+                description:
+                  "We are focused on creating a customer-centric environment.",
+              },
+              {
+                metric: "10",
+                title: "Projects Completed",
+                description:
+                  "Successfully delivered projects for IT & software industries.",
+              },
+            ].map((item) => (
+              <div
+                key={item.title}
+                className="flex items-center gap-6 pl-2 md:pl-12"
+              >
+                <div className="relative ">
+                  <div className="text-6xl md:text-7xl lg:text-8xl font-semibold text-black/90 leading-none">
+                    {item.metric}
+                  </div>
+                  <span className="absolute -top-8 -right-8 text-8xl md:text-7xl font-bold text-rose-500 leading-none">
+                    +
+                  </span>
+                </div>
+                <div className="max-w-xs">
+                  <h3 className="text-base md:text-lg font-semibold text-black/90">
+                    {item.title}
+                  </h3>
+                  <p className="mt-2 text-sm text-muted-foreground">
+                    {item.description}
+                  </p>
+                </div>
               </div>
             ))}
           </div>

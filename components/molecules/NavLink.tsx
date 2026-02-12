@@ -56,6 +56,8 @@ export function NavLink({ item, className, variant = "default" }: NavLinkProps) 
               : variant === "light"
                 ? "text-white/80 hover:text-white"
                 : "text-muted-foreground hover:text-foreground",
+            (isServicesMenu || isCompanyMenu) &&
+              "hover:text-black data-[state=open]:text-black",
             className
           )}
         >
@@ -84,7 +86,7 @@ export function NavLink({ item, className, variant = "default" }: NavLinkProps) 
                   <DropdownMenuItem key={child.href} asChild>
                     <Link
                       href={child.href}
-                      className="flex items-center gap-3 rounded-xl px-3 py-2 text-sm text-foreground/80 hover:bg-muted/60 focus:bg-muted/60"
+                      className="flex items-center gap-3 rounded-xl px-3 py-2 text-sm text-foreground/80 hover:bg-muted/60 focus:bg-muted/60 hover:text-red-500"
                     >
                       <div className="h-9 w-9 rounded-xl bg-[#f6f7fb] flex items-center justify-center">
                         <Icon
@@ -103,7 +105,7 @@ export function NavLink({ item, className, variant = "default" }: NavLinkProps) 
                           className="text-primary"
                         />
                       </div>
-                      <span className="leading-snug">{child.label}</span>
+                      <span className="leading-snug hover:text-red-500">{child.label}</span>
                     </Link>
                   </DropdownMenuItem>
                 ))}
@@ -128,7 +130,7 @@ export function NavLink({ item, className, variant = "default" }: NavLinkProps) 
                           className="text-primary"
                         />
                       </div>
-                      <span className="leading-snug">{child.label}</span>
+                      <span className="leading-snug hover:text-red-500">{child.label}</span>
                     </Link>
                   </DropdownMenuItem>
                 ))}

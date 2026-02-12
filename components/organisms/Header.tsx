@@ -5,8 +5,15 @@ import Link from "next/link";
 import { Logo, Container, Icon } from "@/components/atoms";
 import { NavLink } from "@/components/molecules";
 import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { navigation } from "@/lib/config/site";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -50,7 +57,10 @@ export function Header() {
             side="right"
             className="w-[300px] sm:w-[400px]"
           >
-            <nav className="flex flex-col gap-4 mt-8">
+            <SheetTitle className="sr-only">
+              Mobile Navigation
+            </SheetTitle>
+            {/* <nav className="flex flex-col gap-4 mt-8">
               {navigation.map((item) => (
                 <div key={item.href}>
                   <Link
@@ -81,7 +91,49 @@ export function Header() {
                   Contact Us
                 </Link>
               </Button>
+            </nav> */}
+            <nav className="flex flex-col gap-4 mt-8">
+              <Accordion type="single" collapsible className="w-full">
+                {navigation.map((item) => (
+                  <div key={item.href}>
+                    {item.children ? (
+                      <AccordionItem value={item.label}>
+                        <AccordionTrigger className="text-lg font-medium">
+                          {item.label}
+                        </AccordionTrigger>
+                        <AccordionContent className="flex flex-col gap-2 pl-4">
+                          {item.children.map((child) => (
+                            <Link
+                              key={child.href}
+                              href={child.href}
+                              className="text-sm text-muted-foreground hover:text-primary"
+                              onClick={() => setIsOpen(false)}
+                            >
+                              {child.label}
+                            </Link>
+                          ))}
+                        </AccordionContent>
+                      </AccordionItem>
+                    ) : (
+                      <Link
+                        href={item.href}
+                        className="block text-lg font-medium py-2"
+                        onClick={() => setIsOpen(false)}
+                      >
+                        {item.label}
+                      </Link>
+                    )}
+                  </div>
+                ))}
+              </Accordion>
+
+              <Button asChild className="mt-6">
+                <Link href="/contact" onClick={() => setIsOpen(false)}>
+                  Contact Us
+                </Link>
+              </Button>
             </nav>
+
           </SheetContent>
         </Sheet>
       </Container>

@@ -293,28 +293,28 @@ export default function HomePage() {
             <div className="space-y-6">
               {[
                 {
-                  icon: "grid",
+                  icon: "/cpu-line.svg",
                   title: "Technology Adoption",
                   description:
                     "We provide actionable insights on adopting the latest technologies without any obstacles.",
                   color: "text-amber-400",
                 },
                 {
-                  icon: "sparkles",
+                  icon: "/Vector (1).svg",
                   title: "Digital excellence",
                   description:
                     "Superior solutions are provided to understand the process gaps for expanding Digital Excellence.",
                   color: "text-sky-400",
                 },
                 {
-                  icon: "briefcase",
+                  icon: "/puzzle-2-line.svg",
                   title: "Strategic solution",
                   description:
                     "We ensure seamless integration of ServiceNow with your business processes.",
                   color: "text-amber-300",
                 },
                 {
-                  icon: "trending-up",
+                  icon: "/line-chart-line.svg",
                   title: "Cost Optimisation",
                   description:
                     "We ensure seamless integration of ServiceNow with your business processes.",
@@ -327,7 +327,11 @@ export default function HomePage() {
                 >
                   <div className="flex items-center gap-3">
                     <div className="w-9 h-9 rounded-lg bg-muted flex items-center justify-center">
-                      <Icon name={item.icon} size={18} className={item.color} />
+                      <img
+                        src={item.icon}
+                        alt={`${item.title} icon`}
+                        className="h-5 w-5"
+                      />
                     </div>
                     <h3 className="text-lg font-semibold text-black/90">{item.title}</h3>
                   </div>
@@ -359,18 +363,22 @@ export default function HomePage() {
 
           <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
-              { icon: "users", title: "Customer Satisfaction" },
-              { icon: "trending-up", title: "Cost Optimisation" },
-              { icon: "shield", title: "Assured Commitment" },
-              { icon: "cpu", title: "Technical Excellence" },
-              { icon: "award", title: "Skilled Experts" },
+              { icon: "/icon-3 (2).svg", title: "Customer Satisfaction" }, 
+              { icon: "/hand-coin-line.svg", title: "Cost Optimisation" },
+              { icon: "/shield-check-line.svg", title: "Assured Commitment" },
+              { icon: "/icon (1).svg", title: "Technical Excellence" }, 
+              { icon: "/icon (2).svg", title: "Skilled Experts" }, 
             ].map((item) => (
               <div
                 key={item.title}
                 className="flex items-center gap-4 rounded-2xl border border-border bg-white p-5 shadow-sm"
               >
                 <div className="w-12 h-12 rounded-xl bg-muted flex items-center justify-center">
-                  <Icon name={item.icon} size={20} className="text-foreground" />
+                  <img
+                    src={item.icon}
+                    alt={`${item.title} icon`}
+                    className="h-8 w-8"
+                  />
                 </div>
                 <h3 className="text-base md:text-lg font-semibold text-black/90">
                   {item.title}
@@ -400,7 +408,7 @@ export default function HomePage() {
             </p>
           </div>
 
-          <div className="mt-12 grid md:grid-cols-2 gap-8">
+          <div className="mt-12 grid md:grid-cols-2 gap-10">
             {[
               {
                 metric: "25",
@@ -417,23 +425,23 @@ export default function HomePage() {
             ].map((item) => (
               <div
                 key={item.title}
-                className="rounded-2xl border border-border bg-white p-6 md:p-8 shadow-sm"
+                className="flex items-center gap-6 pl-2 md:pl-12"
               >
-                <div className="flex items-start gap-6">
-                  <div className="text-6xl md:text-7xl font-semibold text-black/80">
+                <div className="relative ">
+                  <div className="text-6xl md:text-7xl lg:text-8xl font-semibold text-black/90 leading-none">
                     {item.metric}
                   </div>
-                  <div className="flex-1">
-                    <div className="h-12 w-12 rounded-lg bg-rose-500/10 flex items-center justify-center">
-                      <span className="text-rose-500 text-3xl leading-none">+</span>
-                    </div>
-                    <h3 className="mt-4 text-lg font-semibold text-black/90">
-                      {item.title}
-                    </h3>
-                    <p className="mt-2 text-sm text-muted-foreground">
-                      {item.description}
-                    </p>
-                  </div>
+                  <span className="absolute -top-8 -right-8 text-8xl md:text-7xl font-bold text-rose-500 leading-none">
+                    +
+                  </span>
+                </div>
+                <div className="max-w-xs">
+                  <h3 className="text-base md:text-lg font-semibold text-black/90">
+                    {item.title}
+                  </h3>
+                  <p className="mt-2 text-sm text-muted-foreground">
+                    {item.description}
+                  </p>
                 </div>
               </div>
             ))}
@@ -441,13 +449,6 @@ export default function HomePage() {
         </Container>
       </section>
 
-      {/* Stats Section */}
-      {/* <StatsSection
-        title="Our numbers and"
-        highlight="Excellence"
-        stats={stats}
-        className="bg-muted/30"
-      /> */}
 
       {/* Testimonials Section */}
       <TestimonialsSection

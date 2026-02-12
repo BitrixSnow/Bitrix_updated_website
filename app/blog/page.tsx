@@ -47,7 +47,7 @@ export default function BlogPage() {
       />
 
       {/* Hero */}
-      <section className="py-16 md:py-24 bg-white">
+      <section className="py-12 md:py-18 bg-white">
         <Container>
           <div className="mb-8 flex items-center gap-2 text-sm text-muted-foreground">
             <Link
@@ -82,7 +82,7 @@ export default function BlogPage() {
             <div className="relative">
               <div className="relative rounded-3xl bg-[#f6f7fb] p-8 aspect-[5/4]">
                 <Image
-                  src="/images/img.svg"
+                  src="/img (7).svg"
                   alt="Blog illustration"
                   fill
                   className="object-contain"

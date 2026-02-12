@@ -106,11 +106,25 @@ export default function ITSMPage() {
       />
 
       {/* Hero */}
-      <section className="py-16 md:py-24">
+      <section className="py-12 md:py-18">
         <Container>
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
-              <p className="text-sm text-muted-foreground mb-4">SERVICENOW ITSM</p>
+              {/* <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-white px-3 py-2 shadow-sm">
+                <Link
+                  href="/"
+                  className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-foreground/15 bg-white text-foreground"
+                  aria-label="Home"
+                >
+                  <Icon name="home" size={14} />
+                </Link>
+                <Icon name="chevron-right" size={14} className="text-foreground/50" />
+                <Link href="/services/servicenow" className="text-sm font-medium text-foreground/75 hover:text-foreground">
+                  ServiceNow
+                </Link>
+                <Icon name="chevron-right" size={14} className="text-foreground/50" />
+                <span className="text-sm font-medium text-foreground/75">IT service management</span>
+              </div> */} 
               <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-6">
                 IT SERVICE <span className="text-primary">MANAGEMENT</span>
               </h1>
@@ -132,10 +146,10 @@ export default function ITSMPage() {
             </div>
             <div className="relative aspect-square">
               <Image
-                src="/images/itsm-illustration.jpg"
+                src="/serviceNow.svg"
                 alt="IT Service Management"
                 fill
-                className="object-contain"
+                className="object-cover"
                 priority
               />
             </div>
