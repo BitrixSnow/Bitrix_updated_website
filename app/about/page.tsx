@@ -217,7 +217,7 @@ export default function AboutPage() {
                 ServiceNow Partner, we create great employee experiences and unlock
                 productivity.
               </p>
-              <p className="mt-4 text-foreground font-semibold">Komal Gupta</p>
+              <p className="mt-4 text-foreground font-semibold">Kiran Singh</p>
               <p className="text-xs text-muted-foreground">CEO & Founder</p>
             </div>
           </div>
