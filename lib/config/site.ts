@@ -72,6 +72,8 @@ export const services: Service[] = [
     description: "Plan, deliver, and track value & drive more customer value faster.",
     icon: "workflow",
     href: "/services/spm",
+    // page not built yet
+    available: false,
   },
   {
     id: "3",
@@ -79,6 +81,8 @@ export const services: Service[] = [
     description: "Analytics & reporting capabilities to identify & resolve issues before they become major..",
     icon: "users",
     href: "/services/itom",
+    // page not built yet
+    available: false,
   },
   {
     id: "4",
@@ -86,6 +90,8 @@ export const services: Service[] = [
     description: "Get real-time visibility and control over your organizations's compliance posture.",
     icon: "briefcase",
     href: "/services/grc",
+    // page not built yet
+    available: false,
   },
   {
     id: "5",
@@ -93,6 +99,8 @@ export const services: Service[] = [
     description: "Track and manage hardware & software assets with real-time visibility & automated workflows.",
     icon: "shield",
     href: "/services/itam",
+    // page not built yet
+    available: false,
   },
   {
     id: "6",
@@ -100,6 +108,8 @@ export const services: Service[] = [
     description: "Get everything from onboarding to benefits management to perform evaluations.",
     icon: "code",
     href: "/services/hrsd",
+    // page not built yet
+    available: false,
   },
   {
     id: "7",
@@ -107,6 +117,8 @@ export const services: Service[] = [
     description: "Streamline customer service processes, improve communication and collaboration & more.",
     icon: "code",
     href: "/services/csm",
+    // page not built yet
+    available: false,
   },
   {
     id: "8",
@@ -114,6 +126,8 @@ export const services: Service[] = [
     description: "Get flow Designer, pushing report, SecOps efficiency dashboard & MITRE framework.",
     icon: "code",
     href: "/services/secops",
+    // page not built yet
+    available: false,
   },
   {
     id: "9",
@@ -121,6 +135,8 @@ export const services: Service[] = [
     description: "Achieve fast time to value, lowest TCO, and zero learning curve with low-code automation.",
     icon: "code",
     href: "/services/enterprise-integration",
+    // page not built yet
+    available: false,
   },
 ];
 

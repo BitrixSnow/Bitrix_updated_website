@@ -33,6 +33,8 @@ const salesforceServices = [
       "Modern Salesforce Lightning interfaces designed for better performance and usability.",
     icon: "workflow",
     href: "/services/salesforce/salesforce-lightning",
+    // page not built yet
+    available: false,
   },
   {
     title: "Salesforce Consulting Services",
@@ -40,6 +42,8 @@ const salesforceServices = [
       "Expert guidance to optimize Salesforce strategy, setup, and usage.",
     icon: "briefcase",
     href: "/services/salesforce/consulting-services",
+    // page not built yet
+    available: false,
   },
   {
     title: "Salesforce Integration",
@@ -47,6 +51,8 @@ const salesforceServices = [
       "Seamless integration of Salesforce with third-party systems and tools.",
     icon: "arrow-right",
     href: "/services/salesforce/integration",
+    // page not built yet
+    available: false,
   },
   {
     title: "Salesforce Data Migration",
@@ -54,6 +60,8 @@ const salesforceServices = [
       "Secure and accurate migration of data into Salesforce with minimal downtime.",
     icon: "check",
     href: "/services/salesforce/data-migration",
+    // page not built yet
+    available: false,
   },
   {
     title: "Salesforce Implementation",
@@ -61,6 +69,8 @@ const salesforceServices = [
       "End-to-end Salesforce setup tailored to your business processes.",
     icon: "building",
     href: "/services/salesforce/implementation",
+    // page not built yet
+    available: false,
   },
   {
     title: "Salesforce CPQ",
@@ -68,6 +78,8 @@ const salesforceServices = [
       "Configure, price, and quote solutions to streamline complex sales processes.",
     icon: "shopping-cart",
     href: "/services/salesforce/cpq",
+    // page not built yet
+    available: false,
   },
   {
     title: "Salesforce Release Management",
@@ -75,6 +87,8 @@ const salesforceServices = [
       "Controlled deployment of Salesforce updates, features, and enhancements.",
     icon: "calendar",
     href: "/services/salesforce/release-management",
+    // page not built yet
+    available: false,
   },
   {
     title: "Salesforce Agentforce",
@@ -82,6 +96,8 @@ const salesforceServices = [
       "Intelligent agent solutions to automate customer interactions and workflows.",
     icon: "users",
     href: "/services/salesforce/agentforce",
+    // page not built yet
+    available: false,
   },
   {
     title: "AppExchange App Development",
@@ -89,6 +105,8 @@ const salesforceServices = [
       "Custom Salesforce apps built and published for the AppExchange marketplace.",
     icon: "code",
     href: "/services/salesforce/appexchange-app-development",
+    // page not built yet
+    available: false,
   },
   {
     title: "Salesforce Einstein Development",
@@ -96,6 +114,8 @@ const salesforceServices = [
       "AI-powered Salesforce solutions using Einstein analytics and automation.",
     icon: "star",
     href: "/services/salesforce/einstein-development",
+    // page not built yet
+    available: false,
   },
 ];
 
@@ -175,23 +195,42 @@ export default function SalesforcePage() {
       <section className="pb-10 md:pb-16 bg-white">
         <Container>
           <div className="grid md:grid-cols-2 gap-5">
-            {salesforceServices.map((service) => (
-              <Link
-                key={service.title}
-                href={service.href}
-                className="rounded-2xl border bg-white p-5 shadow-sm flex gap-4 items-stretch"
-              >
-                <div className="h-12 w-12 rounded-xl border bg-[#f6f7fb] flex items-center justify-center">
-                  <Icon name={service.icon} size={18} className="text-primary" />
-                </div>
-                <div>
-                  <h3 className="text-sm font-semibold">{service.title}</h3>
-                  <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
-                    {service.description}
-                  </p>
-                </div>
-              </Link>
-            ))}
+            {salesforceServices.map((service) => {
+              const cardContent = (
+                <>
+                  <div className="h-12 w-12 rounded-xl border bg-[#f6f7fb] flex items-center justify-center">
+                    <Icon name={service.icon} size={18} className="text-primary" />
+                  </div>
+                  <div>
+                    <h3 className="text-sm font-semibold">{service.title}</h3>
+                    <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
+                      {service.description}
+                    </p>
+                  </div>
+                </>
+              );
+
+              if (service.available === false) {
+                return (
+                  <div
+                    key={service.title}
+                    className="rounded-2xl border bg-white p-5 shadow-sm flex gap-4 items-stretch cursor-default opacity-70"
+                  >
+                    {cardContent}
+                  </div>
+                );
+              }
+
+              return (
+                <Link
+                  key={service.title}
+                  href={service.href}
+                  className="rounded-2xl border bg-white p-5 shadow-sm flex gap-4 items-stretch"
+                >
+                  {cardContent}
+                </Link>
+              );
+            })}
           </div>
         </Container>
       </section>

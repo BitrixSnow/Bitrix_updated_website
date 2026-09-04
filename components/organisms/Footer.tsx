@@ -8,13 +8,20 @@ const footerLinks = {
     // { label: "Business Workflows", href: "/services/workflows" },
     // { label: "Customer Service", href: "/services/customer-service" },
     // { label: "HR Service Delivery", href: "/services/hr" },
-    { label: "IT Workflows", href: "/services/consulting" },
-    { label: "Service Now", href: "/services/consulting" },
-    { label: "Creator Workflows", href: "/services/consulting" },
-    { label: "Customer Workflows", href: "/services/consulting" },
-    { label: "Product Engineering", href: "/services/consulting" },
-    { label: "Employee Workflows", href: "/services/consulting" },
-    { label: "Digital Transformation", href: "/services/consulting" },
+    // page not built yet
+    { label: "IT Workflows", href: "/services/consulting", available: false },
+    // page not built yet
+    { label: "Service Now", href: "/services/consulting", available: false },
+    // page not built yet
+    { label: "Creator Workflows", href: "/services/consulting", available: false },
+    // page not built yet
+    { label: "Customer Workflows", href: "/services/consulting", available: false },
+    // page not built yet
+    { label: "Product Engineering", href: "/services/consulting", available: false },
+    // page not built yet
+    { label: "Employee Workflows", href: "/services/consulting", available: false },
+    // page not built yet
+    { label: "Digital Transformation", href: "/services/consulting", available: false },
   ],
   company: [
     { label: "Blog", href: "/blog" },
@@ -22,8 +29,10 @@ const footerLinks = {
     { label: "About us", href: "/about" },
     { label: "Our Team", href: "/about#team" },
     { label: "Contact us", href: "/contact" },
-    { label: "Privacy Policy", href: "/privacy-policy" },
-    { label: "Cookie Policy", href: "/cookie-policy" },
+    // page not built yet
+    { label: "Privacy Policy", href: "/privacy-policy", available: false },
+    // page not built yet
+    { label: "Cookie Policy", href: "/cookie-policy", available: false },
   ],
   solutions: [
     { label: "Healthcare", href: "/solutions/healthcare" },
@@ -82,16 +91,24 @@ export function Footer() {
             <div>
               <h3 className="font-semibold text-white mb-4">Services</h3>
               <ul className="space-y-3">
-                {footerLinks.services.map((link) => (
-                  <li key={`${link.href}-${link.label}`}>
-                    <Link
-                      href={link.href}
-                      className="text-sm text-footer-foreground/70 hover:text-primary transition-colors"
-                    >
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
+                {footerLinks.services.map((link) =>
+                  link.available === false ? (
+                    <li key={`${link.href}-${link.label}`}>
+                      <span className="text-sm text-footer-foreground/40 cursor-default">
+                        {link.label}
+                      </span>
+                    </li>
+                  ) : (
+                    <li key={`${link.href}-${link.label}`}>
+                      <Link
+                        href={link.href}
+                        className="text-sm text-footer-foreground/70 hover:text-primary transition-colors"
+                      >
+                        {link.label}
+                      </Link>
+                    </li>
+                  )
+                )}
               </ul>
             </div>
 
@@ -99,16 +116,24 @@ export function Footer() {
             <div>
               <h3 className="font-semibold text-white mb-4">Company</h3>
               <ul className="space-y-3">
-                {footerLinks.company.map((link) => (
-                  <li key={link.href}>
-                    <Link
-                      href={link.href}
-                      className="text-sm text-footer-foreground/70 hover:text-primary transition-colors"
-                    >
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
+                {footerLinks.company.map((link) =>
+                  link.available === false ? (
+                    <li key={link.href}>
+                      <span className="text-sm text-footer-foreground/40 cursor-default">
+                        {link.label}
+                      </span>
+                    </li>
+                  ) : (
+                    <li key={link.href}>
+                      <Link
+                        href={link.href}
+                        className="text-sm text-footer-foreground/70 hover:text-primary transition-colors"
+                      >
+                        {link.label}
+                      </Link>
+                    </li>
+                  )
+                )}
               </ul>
             </div>
 
@@ -152,18 +177,26 @@ export function Footer() {
             (c) {new Date().getFullYear()} {siteConfig.name}. All rights reserved.
           </p>
           <div className="flex items-center gap-6">
-            <Link
+            {/* page not built yet */}
+            {/* <Link
               href="/privacy"
               className="text-sm text-footer-foreground/60 hover:text-primary transition-colors"
             >
               Privacy Policy
-            </Link>
-            <Link
+            </Link> */}
+            <span className="text-sm text-footer-foreground/40 cursor-default">
+              Privacy Policy
+            </span>
+            {/* page not built yet */}
+            {/* <Link
               href="/terms"
               className="text-sm text-footer-foreground/60 hover:text-primary transition-colors"
             >
               Terms of Service
-            </Link>
+            </Link> */}
+            <span className="text-sm text-footer-foreground/40 cursor-default">
+              Terms of Service
+            </span>
           </div>
         </div>
       </Container>
