@@ -24,6 +24,7 @@ export const ServiceSchema = z.object({
   description: z.string(),
   icon: z.string(),
   href: z.string(),
+  available: z.boolean().optional(),
 });
 
 export type Service = z.infer<typeof ServiceSchema>;

@@ -32,49 +32,56 @@ const webAppServices = [
     description:
       "Scalable back-end services that power reliable and secure web apps.",
     icon: "settings",
-    href: "/services/website-application-development/node-js-development-services",
+    // href: "/services/website-application-development/node-js-development-services",
+    href: null,
   },
   {
     title: "React Js Development Services",
     description:
       "Fast, component-driven interfaces built for modern web performance.",
     icon: "workflow",
-    href: "/services/website-application-development/react-js-development-services",
+    // href: "/services/website-application-development/react-js-development-services",
+    href: null,
   },
   {
     title: "Mobile App Development",
     description:
       "Cross-platform mobile apps that keep users engaged on the go.",
     icon: "phone",
-    href: "/services/website-application-development/mobile-app-development",
+    // href: "/services/website-application-development/mobile-app-development",
+    href: null,
   },
   {
     title: "Android App Development",
     description:
       "Native Android apps optimized for speed, security, and UX.",
     icon: "shopping-cart",
-    href: "/services/website-application-development/android-app-development",
+    // href: "/services/website-application-development/android-app-development",
+    href: null,
   },
   {
     title: "Cross Platform App Development",
     description:
       "Build once, deploy everywhere with efficient cross-platform stacks.",
     icon: "briefcase",
-    href: "/services/website-application-development/cross-platform-app-development",
+    // href: "/services/website-application-development/cross-platform-app-development",
+    href: null,
   },
   {
     title: "iOS App Development Services",
     description:
       "High-performance iOS apps designed for the Apple ecosystem.",
     icon: "heart",
-    href: "/services/website-application-development/ios-app-development-services",
+    // href: "/services/website-application-development/ios-app-development-services",
+    href: null,
   },
   {
     title: "Flutter App Development",
     description:
       "Beautiful, performant Flutter apps with a single codebase.",
     icon: "star",
-    href: "/services/website-application-development/flutter-app-development",
+    // href: "/services/website-application-development/flutter-app-development",
+    href: null,
   },
 ];
 
@@ -159,26 +166,47 @@ export default function WebApplicationDevelopmentPage() {
       <section className="pb-12 md:pb-20 bg-white">
         <Container>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-            {webAppServices.map((service) => (
-              <Link
-                key={service.title}
-                href={service.href}
-                className="rounded-2xl border bg-white p-5 shadow-sm"
-              >
-                <div className="flex items-start justify-between">
-                  <div className="h-10 w-10 rounded-xl bg-[#f6f7fb] flex items-center justify-center">
-                    <Icon name={service.icon} size={18} className="text-primary" />
+            {webAppServices.map((service) => {
+              const cardContent = (
+                <>
+                  <div className="flex items-start justify-between">
+                    <div className="h-10 w-10 rounded-xl bg-[#f6f7fb] flex items-center justify-center">
+                      <Icon name={service.icon} size={18} className="text-primary" />
+                    </div>
+                    {service.href && (
+                      <div className="h-8 w-8 rounded-full border flex items-center justify-center text-muted-foreground">
+                        <Icon name="arrow-right" size={14} />
+                      </div>
+                    )}
                   </div>
-                  <div className="h-8 w-8 rounded-full border flex items-center justify-center text-muted-foreground">
-                    <Icon name="arrow-right" size={14} />
+                  <h3 className="mt-4 text-sm font-semibold">{service.title}</h3>
+                  <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
+                    {service.description}
+                  </p>
+                </>
+              );
+
+              if (!service.href) {
+                return (
+                  <div
+                    key={service.title}
+                    className="rounded-2xl border bg-white p-5 shadow-sm cursor-default opacity-70"
+                  >
+                    {cardContent}
                   </div>
-                </div>
-                <h3 className="mt-4 text-sm font-semibold">{service.title}</h3>
-                <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
-                  {service.description}
-                </p>
-              </Link>
-            ))}
+                );
+              }
+
+              return (
+                <Link
+                  key={service.title}
+                  href={service.href}
+                  className="rounded-2xl border bg-white p-5 shadow-sm"
+                >
+                  {cardContent}
+                </Link>
+              );
+            })}
           </div>
         </Container>
       </section>
